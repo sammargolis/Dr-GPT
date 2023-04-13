@@ -3,8 +3,6 @@ import streamlit as st
 from langchain import PromptTemplate
 from langchain.llms import OpenAI
 
-openai_api_key= "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"
-
 template = """
 You are a doctor. I will give you my symptoms. If I don't provide symptoms, then stop and tell me I need to. Based on my symptoms, please list the top 5 most likely diagnoses ranked most to least likely with a single-line explanation. Of the listed diagnoses guess what you think I have with percentage likelihood in parentheses.
 
