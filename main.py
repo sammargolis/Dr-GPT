@@ -7,11 +7,12 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import SimpleSequentialChain
 from Bio_Epidemiology_NER.bio_recognizer import ner_prediction
 
+openai_api_key = st.secrets["openai_api_key"]
 
 # simplellm = OpenAI(temperature=1, model_name="text-ada-001", openai_api_key=openai_api_key)
 llm = OpenAI(temperature=0,
              model_name="text-davinci-003",
-             openai_api_key=st.secrets["openai_api_key"])
+             openai_api_key=openai_api_key)
 
 
 template = """
