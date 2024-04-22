@@ -1,18 +1,18 @@
 import streamlit as st
 
-from langchain import PromptTemplate
-from langchain.llms import OpenAI
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain.chains import SimpleSequentialChain
-from Bio_Epidemiology_NER.bio_recognizer import ner_prediction
+# from langchain import PromptTemplate
+# from langchain.llms import OpenAI
+# from langchain.chains import LLMChain
+# from langchain.prompts import PromptTemplate
+# from langchain.chains import SimpleSequentialChain
+# from Bio_Epidemiology_NER.bio_recognizer import ner_prediction
 
-openai_api_key = st.secrets["openai_api_key"]
+# openai_api_key = st.secrets["openai_api_key"]
 
 # simplellm = OpenAI(temperature=1, model_name="text-ada-001", openai_api_key=openai_api_key)
-llm = OpenAI(temperature=0,
-             model_name="text-davinci-003",
-             openai_api_key=openai_api_key)
+# llm = OpenAI(temperature=0,
+#              model_name="text-davinci-003",
+#              openai_api_key=openai_api_key)
 
 
 template = """
@@ -27,10 +27,10 @@ Provide a link from Mayo Clinic that has information on the most likely diagnosi
 RESPONSE:
 """
 
-prompt = PromptTemplate(
-    input_variables=["symptoms"],
-    template=template,
-)
+# prompt = PromptTemplate(
+#     input_variables=["symptoms"],
+#     template=template,
+# )
 
 # Title + Description Items
 st.title("Dr. GPT 👩‍⚕️")
@@ -110,30 +110,30 @@ st.header("Diagnosis:")
 #     return formatted_Input
 
 # Returns dictionary mapping NER concept type to user provided value
-def mapToMedicalEntities(symptom_input):
-    df_med_entities = ner_prediction(corpus=symptom_input, compute='cpu')
-    df_med_entities = df_med_entities.drop(['score'], axis=1)
-    med_entities_dict = dict(
-        zip(df_med_entities.entity_group, df_med_entities.value))
-    # json_MedEntities = df_med_entities.to_json(orient="values")
-    # formatted_MedEntities = reformatJSON(json_MedEntities)
-    return med_entities_dict
+# def mapToMedicalEntities(symptom_input):
+#     df_med_entities = ner_prediction(corpus=symptom_input, compute='cpu')
+#     df_med_entities = df_med_entities.drop(['score'], axis=1)
+#     med_entities_dict = dict(
+#         zip(df_med_entities.entity_group, df_med_entities.value))
+#     # json_MedEntities = df_med_entities.to_json(orient="values")
+#     # formatted_MedEntities = reformatJSON(json_MedEntities)
+#     return med_entities_dict
 
 
-def runModel(symptom_input):
-    medEntities = mapToMedicalEntities(symptom_input)
-    prompt_with_symptoms = prompt.format(symptoms=medEntities)
-    formatted_diagnosis = llm(prompt_with_symptoms)
-    return formatted_diagnosis
-    # return prompt_with_symptoms
+# def runModel(symptom_input):
+#     medEntities = mapToMedicalEntities(symptom_input)
+#     prompt_with_symptoms = prompt.format(symptoms=medEntities)
+#     formatted_diagnosis = llm(prompt_with_symptoms)
+#     return formatted_diagnosis
+#     # return prompt_with_symptoms
 
 
 # If state value present then check if API key is avaialble and then call to model
 if symptom_input:
-    if not openai_api_key:
-        st.warning(
-            'Please insert OpenAI API Key. Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
-        st.stop()
+    # if not openai_api_key:
+    #     st.warning(
+    #         'Please insert OpenAI API Key. Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
+    #     st.stop()
 
     demographic_info = st.session_state.dempgraphics_input
     family_history = st.session_state.history_input
@@ -141,10 +141,11 @@ if symptom_input:
     # Aggregate all of the user input
     user_input = "Subject: Self, Symptoms: " + symptom_input + " and " + \
         demographic_info + " and history: " + family_history
-    st.warning(user_input)
+    # st.warning(user_input)
 
     with st.spinner('One moment, I am thinking...'):
-        formatted_diagnosis = runModel(user_input)
+        # formatted_diagnosis = runModel(user_input)
+        formatted_diagnosis = """So sorry I no longer maintain this application. If you are interested in it, feel free to email or message me.  Previously it would output similar to the following"""
         st.write(formatted_diagnosis)
 
 st.warning('Disclaimer: Dr. GPT is not a substitute for medical advice. In the event of an emergency, contact a medical professional.')
