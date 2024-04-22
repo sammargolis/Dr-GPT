@@ -178,7 +178,7 @@ if symptom_input:
     with st.spinner('One moment, I am thinking...'):
         # formatted_diagnosis = runModel(user_input)
         apologies_messages = """My apologies... I no longer maintain this application. If you are interested in it, feel free to email or message me.  Previously it would output similar to the following:"""
-        st.subheader(apologies_messages)
+        st.caption(apologies_messages)
         mock_diagnosis = test_diagnosis()
         st.write(mock_diagnosis)
 
