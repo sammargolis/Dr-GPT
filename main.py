@@ -179,7 +179,7 @@ if symptom_input:
         # formatted_diagnosis = runModel(user_input)
         apologies_messages = """My apologies... I no longer maintain this application. If you are interested in it, feel free to email or message me.  Previously it would output similar to the following:"""
         st.subheader(apologies_messages)
-        mock_diagnosis = test_diagnosis
+        mock_diagnosis = test_diagnosis()
         st.write(mock_diagnosis)
 
 st.warning('Disclaimer: Dr. GPT is not a substitute for medical advice. In the event of an emergency, contact a medical professional.')
