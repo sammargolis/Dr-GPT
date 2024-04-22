@@ -101,6 +101,38 @@ st.header("Diagnosis:")
 # Really ugly method to remove some of the unnessary string. Shouldn't have this but got lazy looking for a solution and built this for now
 
 
+def test_diagnosis():
+    # Assuming a simplified logic to generate diagnosis
+    diagnosis_text = """
+
+    ### Differential Diagnosis:
+    
+    1. **Asthma**
+       - **Likelihood:** More likely
+       - **Reasoning:** Given your family history of respiratory conditions and symptoms like shortness of breath and persistent cough, asthma is a possible diagnosis. Chest pain from coughing is also possible in asthmatic conditions.
+       
+    2. **Chronic Obstructive Pulmonary Disease (COPD)**
+       - **Likelihood:** Less likely
+       - **Reasoning:** Typically occurs in older individuals and often associated with smoking. However, it can present earlier especially if significant family history.
+    
+    3. **Pulmonary Embolism (PE)**
+       - **Likelihood:** Less likely but potentially serious
+       - **Reasoning:** PE could cause shortness of breath and chest pain; however, it is less common in young people without predisposing factors.
+    
+    4. **Gastroesophageal Reflux Disease (GERD)**
+       - **Likelihood:** Less likely
+       - **Reasoning:** GERD can cause chronic cough and chest pain, but shortness of breath is less commonly associated.
+
+    ### Recommended Action:
+    
+    - **Immediate Concerns:** If you experience severe symptoms such as severe chest pain or sudden shortness of breath, seek immediate medical attention at an emergency room.
+    - **General Next Steps:** Schedule an appointment with your primary care provider for a physical examination and possible diagnostic tests.
+    - **Conclusion:** Professional evaluation is crucial for an accurate diagnosis and effective treatment.
+    """
+    
+    return diagnosis_text
+
+
 # def reformatJSON(input):
 #     formatted_Input = input.replace("],[", "\n\n")
 #     formatted_Input = formatted_Input.replace(",", ":")
@@ -145,7 +177,9 @@ if symptom_input:
 
     with st.spinner('One moment, I am thinking...'):
         # formatted_diagnosis = runModel(user_input)
-        formatted_diagnosis = """So sorry I no longer maintain this application. If you are interested in it, feel free to email or message me.  Previously it would output similar to the following"""
-        st.write(formatted_diagnosis)
+        apologies_messages = """My apologies... I no longer maintain this application. If you are interested in it, feel free to email or message me.  Previously it would output similar to the following:"""
+        st.subheader(apologies_messages)
+        mock_diagnosis = test_diagnosis
+        st.write(mock_diagnosis)
 
 st.warning('Disclaimer: Dr. GPT is not a substitute for medical advice. In the event of an emergency, contact a medical professional.')
